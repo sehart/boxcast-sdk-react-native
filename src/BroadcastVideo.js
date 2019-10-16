@@ -123,6 +123,7 @@ export default class BroadcastVideo extends Component<Props> {
         ref={this.playerRef}
         style={styles.fullScreen}
         controls={true}
+        resizeMode={this.props.resizeMode ? this.props.resizeMode : 'contain'}
         poster={this.props.broadcast.poster || this.props.broadcast.preview}
         {...this.analytics.generateVideoEventProps()}
       />
@@ -132,7 +133,7 @@ export default class BroadcastVideo extends Component<Props> {
   renderPlaceholder(props) {
     const { error, loading, broadcast } = props;
     const { timeframe, starts_at } = broadcast;
-    
+
     if (loading) {
       return (
         <View style={styles.container}>
